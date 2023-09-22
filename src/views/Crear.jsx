@@ -1,0 +1,63 @@
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { postsAPI } from "../api/postsAPI";
+import { useLocation, useNavigate } from "react-router-dom";
+
+export default function Crear() {
+  const { auth, userName } = useContext(AuthContext);
+  const [guardado, setGuardado] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const titulo = e.target.titulo.value;
+    const texto = e.target.texto.value;
+
+    if (titulo == "" || texto == "") {
+      setGuardado("Debes completar ambos campos");
+    }
+
+    const api = postsAPI;
+    if (auth === true) {
+      api
+        .post(userName, titulo, texto)
+        .then((response) => {
+          console.log(response.data);
+          setGuardado("Post creado con exito!");
+        })
+        .catch((error) => {
+          console.log(`${error.response.status}|${error.response.data.detail}`);
+          alert(`No se pudo crear el post: ${error.code}`);
+          setGuardado("No se pudo crear el post");
+          navigate(`/login?next=${location.pathname}`);
+        });
+    }
+  }
+
+  return (
+    <>
+      <h3>Completa para crear tu post</h3>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Titulo
+          <input type="text" name="titulo" placeholder="titulo del post" />
+        </label>
+        <br />
+        <label>
+          Texto
+          <textarea
+            type="text"
+            name="texto"
+            rows="5"
+            placeholder="esribe tu post"
+          />
+        </label>
+        <br />
+        <input type="submit" value="Guardar" />
+      </form>
+      <p>{guardado}</p>
+    </>
+  );
+}
