@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "../views/Home";
+import Home from "../views/home/Home";
 import Posteos from "../views/Posteos";
 import Navbar from "../components/Navbar";
 import Crear from "../views/Crear";
 import LeerPost from "../views/LeerPost";
-import Login from "../views/Login";
+import Login from "../views/login/Login";
 import Logout from "../views/Logout";
 import { RoutesProtect } from "./RoutesProtect";
 import ModificarPost from "../views/ModificarPost";

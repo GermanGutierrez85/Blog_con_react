@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
-import { loginApi } from "../api/loginApi";
+import { AuthContext } from "../../context/AuthContext";
+import { loginApi } from "../../api/loginApi";
+import style from "./login.module.css";
 
 export default function Login() {
   const [empty, setEmpty] = useState("");
@@ -42,20 +43,22 @@ export default function Login() {
   }
 
   return (
-    <>
-      <h4>Ingresa usuario y contraseña</h4>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Usuario:
-          <input type="text" name="name" />
-        </label>
-        <label>
-          Contraseña:
-          <input type="password" name="password" />
-        </label>
-        <p>{empty}</p>
-        <input type="submit" value="Log in" />
-      </form>
-    </>
+    <div className={style.loginPage}>
+      <div className={style.loginCard}>
+        <h3 className={style.ingresar}>Ingresa usuario y contraseña</h3>
+        <form onSubmit={handleSubmit} className={style.form}>
+          <label>
+            Usuario:
+            <input type="text" name="name" />
+          </label>
+          <label>
+            Contraseña:
+            <input type="password" name="password" />
+          </label>
+          <p>{empty}</p>
+          <input type="submit" value="Log in" />
+        </form>
+      </div>
+    </div>
   );
 }
