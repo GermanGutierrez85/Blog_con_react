@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../views/home/Home";
-import Posteos from "../views/Posteos";
+import Posteos from "../views/posteos/Posteos";
 import Navbar from "../components/Navbar";
-import Crear from "../views/Crear";
+import Crear from "../views/crear/Crear";
 import LeerPost from "../views/LeerPost";
 import Login from "../views/login/Login";
 import Logout from "../views/Logout";
 import { RoutesProtect } from "./RoutesProtect";
-import ModificarPost from "../views/ModificarPost";
+import ModificarPost from "../views/modificarPost/ModificarPost";
 
 export default function RoutesBlog() {
   return (

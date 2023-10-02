@@ -1,7 +1,9 @@
 import { useState, useContext, useEffect } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { postsExt } from "../api/posteos_extendidos";
+import { AuthContext } from "../../context/AuthContext";
+import { postsExt } from "../../api/posteos_extendidos";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { CssTextField, CssButton } from "../../api/stylesMui";
+import style from "./modificarPost.module.css";
 
 export default function ModificarPost() {
   const { auth, userName } = useContext(AuthContext);
@@ -28,7 +30,11 @@ export default function ModificarPost() {
         .then((response) => {
           console.log(response.data);
           setGuardado("Post creado con exito!");
-          setPostModificado(<Link to="/posteos">Leer post modificado</Link>);
+          setPostModificado(
+            <Link to="/posteos" style={{ color: "darkgoldenrod" }}>
+              Leer post modificado
+            </Link>
+          );
         })
         .catch((error) => {
           console.log(`${error.response.status}|${error.response.data.detail}`);
@@ -41,7 +47,27 @@ export default function ModificarPost() {
 
   return (
     <>
-      <h3>Modificar Post N° {idEntero}</h3>
+      <div className={style.setPostPage}>
+        <div className={style.setPostCard}>
+          <h3>Modificar Post N° {idEntero}</h3>
+          <form onSubmit={handleSet} className={style.form}>
+            <CssTextField label="Titulo" name="titulo" />
+            <CssTextField
+              name="texto"
+              label="Escribe tu post"
+              multiline
+              minRows={3}
+              maxRows={15}
+            />
+            <CssButton variant="contained" type="submit">
+              Guardar
+            </CssButton>
+          </form>
+          <p>{guardado}</p>
+          <p /* className={style.newSetPost} */>{postModificado}</p>
+        </div>
+      </div>
+      {/* <h3></h3>
       <form onSubmit={handleSet}>
         <label>
           Titulo
@@ -61,7 +87,7 @@ export default function ModificarPost() {
         <input type="submit" value="Guardar" />
       </form>
       <p>{guardado}</p>
-      <span>{postModificado}</span>
+      <span>{postModificado}</span> */}
     </>
   );
 }

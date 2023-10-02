@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { loginApi } from "../../api/loginApi";
 import style from "./login.module.css";
+import { CssTextField, CssButton } from "../../api/stylesMui";
 
 export default function Login() {
   const [empty, setEmpty] = useState("");
@@ -47,16 +48,22 @@ export default function Login() {
       <div className={style.loginCard}>
         <h3 className={style.ingresar}>Ingresa usuario y contraseña</h3>
         <form onSubmit={handleSubmit} className={style.form}>
-          <label>
-            Usuario:
-            <input type="text" name="name" />
-          </label>
-          <label>
-            Contraseña:
-            <input type="password" name="password" />
-          </label>
+          <CssTextField
+            label="Usuario"
+            /* className="custom-css-outlined-input" */
+            name="name"
+          />
+          <CssTextField
+            label="Password"
+            /* className="custom-css-outlined-input" */
+            type="password"
+            name="password"
+          />
+
           <p>{empty}</p>
-          <input type="submit" value="Log in" />
+          <CssButton variant="contained" type="submit">
+            Log in
+          </CssButton>
         </form>
       </div>
     </div>

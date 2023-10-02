@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
-import { client } from "../api/client";
-import { postsAPI } from "../api/postsAPI";
-import { AuthContext } from "../context/AuthContext";
-import { postsExt } from "../api/posteos_extendidos";
+import { client } from "../../api/client";
+import { postsAPI } from "../../api/postsAPI";
+import { AuthContext } from "../../context/AuthContext";
+import { postsExt } from "../../api/posteos_extendidos";
+import { CssButton } from "../../api/stylesMui";
+import style from "./posteos.module.css";
 
 export default function Posteos() {
   const { auth, userName } = useContext(AuthContext);
@@ -38,12 +40,7 @@ export default function Posteos() {
   const handleRead = (num) => {
     navigate(`/posteos/leer/${num}`);
   };
-  /* const handleSet = (num) => {
-    const confirm = confirm(`Desea modificar el post n° ${num}`);
-    if (confirm) {
-      navigate(`posteos/modificar/${num}`);
-    }
-  }; */
+
   const handleDelete = (num) => {
     console.log(num);
     auth === true
@@ -57,22 +54,27 @@ export default function Posteos() {
   };
   //Renderizado de posteos
   const card = posteos.map((post) => (
-    <div className="postsCards" key={post.id}>
+    <div className={style.postCard} key={post.id}>
       <div>
         <h5>Post n° {post.id}</h5>
         <p>{post.titulo}</p>
       </div>
 
-      <div className="buttons">
-        <button
+      <div className={style.buttons}>
+        <CssButton
+          variant="contained"
+          sx={{ fontSize: 10, width: 10 }}
           onClick={(e) => {
             e.preventDefault();
             handleRead(post.id);
           }}
         >
           Leer
-        </button>
-        <button
+        </CssButton>
+
+        <CssButton
+          variant="contained"
+          sx={{ fontSize: 10, width: 10 }}
           onClick={(e) => {
             e.preventDefault();
             const confirmDelete = confirm(
@@ -83,16 +85,20 @@ export default function Posteos() {
             }
           }}
         >
-          Borrar
-        </button>
+          borrar
+        </CssButton>
       </div>
     </div>
   ));
 
   return (
     <>
-      <h1>Posteos</h1>
-      <div>{Array.isArray(posteos) ? card : <></>}</div>
+      <div className={style.posteosPage}>
+        <h1>Posteos</h1>
+        <div className={style.posteosCards}>
+          {Array.isArray(posteos) ? card : <></>}
+        </div>
+      </div>
     </>
   );
 }

@@ -1,7 +1,9 @@
 import { useState, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { postsAPI } from "../api/postsAPI";
+import { AuthContext } from "../../context/AuthContext";
+import { postsAPI } from "../../api/postsAPI";
 import { useLocation, useNavigate } from "react-router-dom";
+import { CssTextField, CssButton } from "../../api/stylesMui";
+import style from "./crear.module.css";
 
 export default function Crear() {
   const { auth, userName } = useContext(AuthContext);
@@ -38,26 +40,25 @@ export default function Crear() {
 
   return (
     <>
-      <h3>Completa para crear tu post</h3>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Titulo
-          <input type="text" name="titulo" placeholder="titulo del post" />
-        </label>
-        <br />
-        <label>
-          Texto
-          <textarea
-            type="text"
-            name="texto"
-            rows="5"
-            placeholder="esribe tu post"
-          />
-        </label>
-        <br />
-        <input type="submit" value="Guardar" />
-      </form>
-      <p>{guardado}</p>
+      <div className={style.newPostPage}>
+        <div className={style.newPostCard}>
+          <h3>Completa para crear tu post</h3>
+          <form onSubmit={handleSubmit} className={style.form}>
+            <CssTextField label="Titulo" name="titulo" />
+            <CssTextField
+              name="texto"
+              label="Escribe tu post"
+              multiline
+              minRows={3}
+              maxRows={15}
+            />
+            <CssButton variant="contained" type="submit">
+              Guardar
+            </CssButton>
+          </form>
+          <p>{guardado}</p>
+        </div>
+      </div>
     </>
   );
 }
