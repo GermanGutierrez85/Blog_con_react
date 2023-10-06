@@ -48,15 +48,16 @@ export const CssTextField = styled(TextField)({
   },
 });
 export const CssButton = styled(Button)({
-    backgroundColor:'#036564',
+    /* backgroundColor:'#036564', */
+    backgroundColor: 'transparent',
     fontSize:'0.8rem',
     fontFamily:'inherit',
     fontWeight:600,
-    borderRadius: 8,
+    borderRadius: 10,
     boxShadow:'none',
     "&:hover":{
         backgroundColor:"#033649",
-        borderColor:"#031634"
+       
     }
 });
 

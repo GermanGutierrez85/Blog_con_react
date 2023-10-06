@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { postsExt } from "../../api/posteos_extendidos";
 import { CssButton } from "../../api/stylesMui";
 import style from "./posteos.module.css";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 export default function Posteos() {
   const { auth, userName } = useContext(AuthContext);
@@ -63,7 +64,7 @@ export default function Posteos() {
       <div className={style.buttons}>
         <CssButton
           variant="contained"
-          sx={{ fontSize: 10, width: 10 }}
+          sx={{ fontSize: 12, width: 10 }}
           onClick={(e) => {
             e.preventDefault();
             handleRead(post.id);
@@ -74,7 +75,6 @@ export default function Posteos() {
 
         <CssButton
           variant="contained"
-          sx={{ fontSize: 10, width: 10 }}
           onClick={(e) => {
             e.preventDefault();
             const confirmDelete = confirm(
@@ -85,7 +85,7 @@ export default function Posteos() {
             }
           }}
         >
-          borrar
+          <DeleteForeverIcon sx={{ width: 16 }} />
         </CssButton>
       </div>
     </div>

@@ -3,11 +3,12 @@ import Home from "../views/home/Home";
 import Posteos from "../views/posteos/Posteos";
 import Navbar from "../components/Navbar";
 import Crear from "../views/crear/Crear";
-import LeerPost from "../views/LeerPost";
+import LeerPost from "../views/leerPosts/LeerPost";
 import Login from "../views/login/Login";
 import Logout from "../views/Logout";
 import { RoutesProtect } from "./RoutesProtect";
 import ModificarPost from "../views/modificarPost/ModificarPost";
+import Error404 from "../views/error404/Error404";
 
 export default function RoutesBlog() {
   return (
@@ -28,6 +29,7 @@ export default function RoutesBlog() {
               element={<ModificarPost />}
             />
           </Route>
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </Router>
     </>
