@@ -72,9 +72,20 @@ export default function LeerPost() {
       </NavLink>
     </div> */}
 
-      <Card className={style.postCard}>
+      <Card
+        className={style.postCard}
+        style={{
+          backgroundColor: "rgb(3, 22, 52, 0.7)",
+          boxShadow: "3px 3px 25px #031634",
+        }}
+      >
         <CardContent className={style.texts}>
-          <Typography gutterBottom variant="p" component="div">
+          <Typography
+            gutterBottom
+            variant="p"
+            component="div"
+            className={style.postNumber}
+          >
             Post N° {id}
           </Typography>
           <Typography variant="body2" color="white">

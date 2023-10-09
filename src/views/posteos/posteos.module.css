@@ -9,6 +9,7 @@
 }
 h1{
     color: #e8ddcb;
+    
 }
 .postCard{
     display: flex;
@@ -27,6 +28,8 @@ h1{
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+    border-top: 3px solid #FCBC03;
+    margin-top: 10px;
     
 }
 .buttons{
