@@ -2,21 +2,16 @@ import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
 import style from "./Navbar.module.css";
-import DehazeIcon from "@mui/icons-material/Dehaze";
+import GiteRoundedIcon from "@mui/icons-material/GiteRounded";
 
 export default function Navbar() {
   const { auth } = useContext(AuthContext);
-  const [sideBar, setSideBar] = useState("none");
-  const handleSideBar = () => setSideBar("");
 
   return (
     <>
       <nav className={style.navbar}>
-        <div className={style.burgerIcon} onClick={() => handleSideBar()}>
-          <DehazeIcon />
-        </div>
         <ul className={style.links}>
-          <div>
+          <div className={style.menulinks}>
             <NavLink key={1} to="/" className={style.navlink}>
               Home
             </NavLink>
@@ -54,3 +49,4 @@ export default function Navbar() {
     </>
   );
 }
+/* import React, { useState } from "react"; */

@@ -31,14 +31,19 @@ a:hover {
 }
  */
 body {
+  background-image: url(https://img.freepik.com/premium-vector/doodle-paper-note-hand-drawn-notebook-pages-sticky-notes-empty-papers-sheets-sketches-cute-memo-stickers-with-pin-tape-vector-set-journal-reminder-writing-pencil-pen_461812-964.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1696896000&semt=ais);
+  background-size: 385px;
   
-  background: linear-gradient(180deg, rgba(3,101,100,1) 40%, rgba(3,22,52,1) 90%);
   margin: 0;
   display: flex;  
   min-width: 100vw;
   min-height: 100vh;
   justify-content: center;
 
+}
+.background{
+  background: linear-gradient(180deg, rgba(3,101,100,0.9) 40%, rgba(3,22,52,0.9) 90%);
+  height: 100vh;
 }
 
 
